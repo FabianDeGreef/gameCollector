@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    command: --init-file /data/application/init.sql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/data/application/init.sql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=collector
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - app-network
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - "/app/node_modules"
+    restart: always
+    environment:
+      - DB_HOST=mysql
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,36 @@
+<div class="container">
+  {{#each rows}}
+    <div class="row justify-content-center">
+      <div class="col-sm-6">
+        <div class="card card-box">
+          <div class="card-thumbnail">
+            {{#if this.image}}
+              <img
+                class="card-img-top img-fluid"
+                src="/storage/{{this.image}}"
+                alt="image"
+              />
+            {{else}}
+              <img
+                class="card-img-top img-fluid"
+                src="/img/default.jpg"
+                alt="image"
+              />
+            {{/if}}
+          </div>
+          <div class="card-body">
+            <h3 class="mt-2">{{this.name}}</h3>
+            <div>{{this.category}}</div>
+            <br />
+            <p class="text-secondary">{{this.description}}</p>
+
+            <div class="d-flex flex-row justify-content-center mt-auto">
+              <a type="button" class="btn btn-lg btn-block btn-primary">View
+                Game</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,34 @@
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" value="{{this.name}}" name="name" id="inputName" placeholder="Game name">
+            <label for="inputName">Game Name</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" value="{{this.category}}" name="category" id="inputCategory" placeholder="Game category">
+            <label for="inputCategory">Game Category</label>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="mb-3">
+            <label for="inputImage">Game Image</label>
+            <input class="form-control" type="file" id="inputImage" name="file" accept="image/*" />
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-floating mb-3">
+            <textarea class="form-control" name="description" style="height: 200px" id="inputDescription"
+                rows="5">{{this.description}}</textarea>
+            <label for="inputDescription">Game Description</label>
+        </div>
+    </div>
+
+    <div class="col-12 d-grid">
+        <button type="submit" class="btn btn-primary">Add Game</button>
+    </div>
+
+

@@ -1,0 +1,94 @@
+{{#if removedGame}}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{removedGame}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/if}}
+
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Games</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-info active">All</button>
+          <button type="button" class="btn btn-success">Active</button>
+          <button type="button" class="btn btn-danger">Inactive</button>
+          <a href="/creategame" type="button" class="btn btn-primary">Add</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Image</th>
+          <th scope="col">Active</th>
+          <th scope="col" class="text-end">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each rows}}
+          <tr>
+            <th scope="row">{{this.id}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.category}}</td>
+            {{#if this.image}}
+              <td class="w-25">
+                <img
+                  src="/storage/{{this.image}}"
+                  class="card-img-top img-fluid table-image"
+                  alt="image"
+                />
+              </td>
+            {{else}}
+              <td class="w-25">
+                <img
+                  src="/img/default.jpg"
+                  class="card-img-top img-fluid table-image"
+                  alt="image"
+                />
+              </td>
+            {{/if}}
+
+            {{#ifEquals this.active "active"}}
+              <td><span class="badge bg-success">Active</span></td>
+            {{/ifEquals}}
+
+            {{#ifEquals this.active "inactive"}}
+              <td><span class="badge bg-danger">Inactive</span></td>
+            {{/ifEquals}}
+
+            <td>
+              <div class="d-flex flex-row justify-content-center mt-auto">
+                <a
+                  href="/updategame/{{this.id}}"
+                  class="btn btn-m btn-block manage"
+                ><i class="bi bi-pencil"></i></a>
+                <a
+                  href="/delete/{{this.id}}"
+                  class="btn btn-m btn-block manage"
+                ><i class="bi bi-trash"></i></a>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

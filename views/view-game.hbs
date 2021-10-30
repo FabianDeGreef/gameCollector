@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">View Game</li>
+    </ol>
+</nav>
+
+
+<div class="card">
+    {{#each row}}
+
+    {{#if this.image}}
+    <img class="card__image" src="/storage/{{this.image}}" alt="image">
+    {{else}}
+    <img class="card__image" src="/img/default.jpg" alt="image">
+    {{/if}}
+
+    <h1 class="card__title">{{this.name}}</h1>
+    <div class="card__category">{{this.category}}</div>
+    <p class="card__description">{{this.description}}</p>
+    <button type="button" class="btn btn-primary">View Game</button>
+
+    {{/each}}
+</div>
